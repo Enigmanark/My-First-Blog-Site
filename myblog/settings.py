@@ -25,7 +25,7 @@ SECRET_KEY = '0d^m9c(2m*9eql+0)!0)h@bfm7%4o)85@8ekw@ew2_o7i18xxi'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['keleiron.pythonanywhere.com']
 
 
 # Application definition
