@@ -34,7 +34,7 @@ h1, h2, h3, h4 {
 	margin-right: 40px;
 }
 
-.post-form {
+.post-form textarea, .post-form input {
 	width: 100%;
 }
 
