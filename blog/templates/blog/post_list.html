@@ -1,29 +1,10 @@
-{% load static %}
-<html>
-
-<head>
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" type="text/css" href="{% static 'blog/blog.css' %}">
-	<title>Keleiron's Blog</title>
-</head>
-
-<body>
-	
-	<div class="page-header">
-		<h1><a href="/">Keleiron's Blog</a></h1>
-	</div>
-	
-	<div class="content">	
+{% extends 'blog/base.html' %}
+{% block content %}
 	{% for post in posts %}
 			<div class="post">
 				<p class="date">published: {{ post.published_date }}</p>
-				<h1><a href=""> {{ post.title }}</a></h1>
+				<h1><a href="{% url 'post_detail' pk=post.pk %}"> {{ post.title }}</a></h1>
 				<p>{{ post.text|linebreaksbr }} </p>
 			</div>
-		{% endfor %}
-	</div>
-
-	</body>
-
-</html>
+	{% endfor %}
+{% endblock %}
