@@ -11,7 +11,10 @@
 <body>
 	
 	<div class="page-header">
-		<a href="{% url 'post_new' %}" class="top-menu"><span id="newPost" class="glyphicon glyphicon-plus"></span></a>
+		{% if user.is_authenticated %}
+			<a href="{% url 'post_draftList' %}" class="top-menu"><span id="draftList" class="glyphicon glyphicon-edit"></span></a>
+			<a href="{% url 'post_new' %}" class="top-menu"><span id="newPost" class="glyphicon glyphicon-plus"></span></a>
+		{% endif %}
 		<h1><a href="/">Keleiron's Blog</a></h1>
 	</div>
 	

@@ -19,6 +19,13 @@
     margin-right: 20px;
 }
 
+#draftList {
+	color: #ffffff;
+    float: right;
+    font-size: 26pt;
+    margin-right: 20px;
+}
+
 h1, h2, h3, h4 {
     font-family: 'Oleo Script', Helvetica, sans-serif;
 }
@@ -30,8 +37,8 @@ h1, h2, h3, h4 {
 
 .date, .author {
     color: #828282;
-	float: right;
 	margin-right: 40px;
+	float: right;
 }
 
 .post-form textarea, .post-form input {
@@ -48,5 +55,7 @@ h1, h2, h3, h4 {
 
 .post {
 	margin-bottom: 70px;
+	padding: 10px;
+	background-color: white;
 }
 
