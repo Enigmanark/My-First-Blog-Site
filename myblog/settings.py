@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['keleiron.pythonanywhere.com', 'localhost']
 
+LOGIN_REDIRECT_URL = "/"
 
 # Application definition
 

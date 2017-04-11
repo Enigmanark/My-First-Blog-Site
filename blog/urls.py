@@ -11,4 +11,5 @@ urlpatterns = [
 	url(r'^drafts/$', views.post_draftList, name='post_draftList'),
 	url(r'^post/publish/(?P<pk>\d+)/$', views.post_publish, name='post_publish'),
 	url(r'^post/unpublish/(?P<pk>\d+)/$', views.post_unpublish, name='post_unpublish'),
+	url(r'^accounts/new/$', views.account_new, name='account_new'),
 ]

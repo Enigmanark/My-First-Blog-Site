@@ -12,20 +12,36 @@
 	text-decoration: none;
 }
 
-#newPost {
+#login {
+	margin-right: 20px;
+	font-size: 15pt;
+	color: white;
+	float: right;
+	text-decoration: none;
+}
+
+#new-post-button {
 	color: #ffffff;
     float: right;
     font-size: 26pt;
     margin-right: 20px;
 }
 
-#draftList {
+#edit-button {
 	color: #ffffff;
     float: right;
     font-size: 26pt;
     margin-right: 20px;
 }
 
+#account-info {
+	color: #ffffff;
+    float: right;
+    font-size: 15pt;
+	position: relative;
+	top: -5px;
+    margin-right: 20px;
+}
 h1, h2, h3, h4 {
     font-family: 'Oleo Script', Helvetica, sans-serif;
 }
