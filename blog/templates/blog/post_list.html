@@ -2,11 +2,15 @@
 {% block content %}
 	{% for post in posts %}
 			<div class="post">
-				<div class="post-details">
-					<p class="date">published: {{ post.published_date }}</p>
-					<p class="author">author: {{ post.author }}</p>
-				</div>
 				<h2><a href="{% url 'post_detail' pk=post.pk %}"> {{ post.title }}</a></h2>
+				<div class="post-details">
+					<p class="author_and_date">
+						{% if post.published_date %}
+							published: {{ post.published_date }}
+						{% endif %}
+						author: {{ post.author }} 
+					</p>
+				</div>
 				<p>{{ post.text|linebreaksbr }} </p>
 			</div>
 	{% endfor %}

@@ -35,9 +35,11 @@ h1, h2, h3, h4 {
 	text-decoration: none;
 }
 
-.date, .author {
+.author_and_date {
     color: #828282;
-	margin-right: 40px;
+}
+
+.post-buttons {
 	float: right;
 }
 
