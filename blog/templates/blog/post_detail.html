@@ -3,12 +3,14 @@
 		<div class="post">
 			{% if user.is_authenticated %}
 				<div class="post-buttons">
-					<a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-					<a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-					{% if post.published_date == None %}
-						<a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
-					{% else %}
-						<a class="btn btn-default" href="{% url 'post_unpublish' pk=post.pk %}">Unpublish</a>
+					{% if is_admin == True %}
+						<a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+						<a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+						{% if post.published_date == None %}
+							<a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+						{% else %}
+							<a class="btn btn-default" href="{% url 'post_unpublish' pk=post.pk %}">Unpublish</a>
+						{% endif %}
 					{% endif %}
 				</div>
 			{% endif %}
