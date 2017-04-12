@@ -1,0 +1,10 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+	<h1>New User</h1>
+	<form method="POST" class="new-user-form">
+		{% csrf_token %}
+		{{ reg.as_p }}
+		{% if match == False %}<p>Passwords do not match. Try again.</p> {% endif %}
+		<button type="submit" class="save btn btn-default">Submit</button>
+	</form>
+{% endblock %}

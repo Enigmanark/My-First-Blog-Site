@@ -1,0 +1,79 @@
+.page-header {
+	background-color: #ff9400;
+	margin-top: 0;
+	padding: 20px 10px 20px 20px;
+	width: 75%;
+	margin: auto;
+}
+
+.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
+	color: #ffffff;
+	font-size: 36pt;
+	text-decoration: none;
+}
+
+#login {
+	margin-right: 20px;
+	font-size: 15pt;
+	color: white;
+	float: right;
+	text-decoration: none;
+}
+
+#new-post-button {
+	color: #ffffff;
+    float: right;
+    font-size: 26pt;
+    margin-right: 20px;
+}
+
+#edit-button {
+	color: #ffffff;
+    float: right;
+    font-size: 26pt;
+    margin-right: 20px;
+}
+
+#account-info {
+	color: #ffffff;
+    float: right;
+    font-size: 15pt;
+	position: relative;
+	top: -5px;
+    margin-right: 20px;
+}
+h1, h2, h3, h4 {
+    font-family: 'Oleo Script', Helvetica, sans-serif;
+}
+
+.post h2 a, .post h2 a:visited {
+    color: #000000;
+	text-decoration: none;
+}
+
+.author_and_date {
+    color: #828282;
+}
+
+.post-buttons {
+	float: right;
+}
+
+.post-form textarea, .post-form input {
+	width: 100%;
+}
+
+.content {
+	padding: 20px;
+	background-color: peachpuff;
+	width: 75%;
+	margin: auto;
+	margin-top: 10px;
+}
+
+.post {
+	margin-bottom: 70px;
+	padding: 10px;
+	background-color: white;
+}
+
