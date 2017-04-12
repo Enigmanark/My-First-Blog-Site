@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Permission
+from .models import Post, BlogUser
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -10,4 +10,4 @@ class PostAdmin(admin.ModelAdmin):
 	search_fields = ['title', 'text',]
 
 # Register your models here.
-admin.site.register([Post, Permission])
+admin.site.register([Post, BlogUser])

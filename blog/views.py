@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from django.contrib.auth.models import User 
-from .models import Post, Permission
+from .models import Post
 from .forms import PostForm, RegistrationForm
 
 # Create your views here.
@@ -23,27 +23,17 @@ def account_new(request):
 		return render(request, 'blog/account_new.html', {'reg': reg, 'match': True})
 	
 def post_list(request):
-	try:
-		is_admin = Permission.objects.get(user=request.user).can_post
-	except (TypeError, Permission.DoesNotExist):
-		is_admin = False
 	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-	return render(request, 'blog/post_list.html', {'posts': posts, 'is_admin': is_admin})
+	return render(request, 'blog/post_list.html', {'posts': posts})
 		
 	
 def post_detail(request, pk):
-	try:
-		is_admin = Permission.objects.get(user=request.user).can_post
-	except (TypeError, Permission.DoesNotExist):
-		is_admin = False
 	post = get_object_or_404(Post, pk=pk)
-	return render(request, 'blog/post_detail.html', {'post': post, 'is_admin': is_admin})
+	return render(request, 'blog/post_detail.html', {'post': post})
 
 @login_required	
 def post_new(request):
-	try:
-		is_admin = Permission.objects.get(user=request.user).can_post
-	except (TypeError, Permission.DoesNotExist):
+	if not request.user.can_post:
 		return redirect('post_list')
 	if request.method == "POST":
 		form = PostForm(request.POST)
@@ -59,9 +49,7 @@ def post_new(request):
 
 @login_required	
 def post_publish(request, pk):
-	try:
-		is_admin = Permission.objects.get(user=request.user).can_post
-	except (TypeError, Permission.DoesNotExist):
+	if not request.user.can_post:
 		return redirect('post_list')
 	post = get_object_or_404(Post, pk=pk)
 	post.publish()
@@ -69,9 +57,7 @@ def post_publish(request, pk):
 
 @login_required	
 def post_unpublish(request, pk):
-	try:
-		is_admin = Permission.objects.get(user=request.user).can_post
-	except (TypeError, Permission.DoesNotExist):
+	if not request.user.can_post:
 		return redirect('post_list')
 	post = get_object_or_404(Post, pk=pk)
 	post.unpublish()
@@ -79,9 +65,7 @@ def post_unpublish(request, pk):
 
 @login_required		
 def post_remove(request, pk):
-	try:
-		is_admin = Permission.objects.get(user=request.user).can_post
-	except (TypeError, Permission.DoesNotExist):
+	if not request.user.can_post:
 		return redirect('post_list')
 	post = get_object_or_404(Post, pk=pk)
 	post.delete()
@@ -89,9 +73,7 @@ def post_remove(request, pk):
 	
 @login_required	
 def post_edit(request, pk):
-	try:
-		is_admin = Permission.objects.get(user=request.user).can_post
-	except (TypeError, Permission.DoesNotExist):
+	if not request.user.can_post:
 		return redirect('post_list')
 	post = get_object_or_404(Post, pk=pk)
 	if request.method == "POST":
@@ -107,9 +89,7 @@ def post_edit(request, pk):
 	
 @login_required	
 def post_draftList(request):
-	try:
-		is_admin = Permission.objects.get(user=request.user).can_post
-	except (TypeError, Permission.DoesNotExist):
+	if not request.user.can_post:
 		return redirect('post_list')
 	posts = Post.objects.filter(published_date__isnull=True).order_by('-created_date')
 	return render(request, 'blog/post_draftList.html', {'posts': posts})

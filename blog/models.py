@@ -1,23 +1,15 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
-class Permission(models.Model):
-	user = models.ForeignKey('auth.User')
+class BlogUser(AbstractUser):
 	can_post = models.BooleanField(default=False)
-	
-	@property
-	def name(self):
-		return self.user.username
-	
-	def __str__(self):
-		return self.user.username;
 
 class Post(models.Model):
-	author = models.ForeignKey('auth.User')
+	author = models.ForeignKey(settings.AUTH_USER_MODEL)
 	title = models.CharField(max_length=256)
 	text = models.TextField()
 	created_date = models.DateTimeField(default=timezone.now)

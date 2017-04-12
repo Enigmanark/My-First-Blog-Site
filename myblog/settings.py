@@ -29,6 +29,8 @@ ALLOWED_HOSTS = ['keleiron.pythonanywhere.com', 'localhost']
 
 LOGIN_REDIRECT_URL = "/"
 
+AUTH_USER_MODEL = 'blog.BlogUser'
+
 # Application definition
 
 INSTALLED_APPS = [

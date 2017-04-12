@@ -14,7 +14,7 @@
 		{% if user.is_authenticated %}
 			<a href="{% url 'logout' %}" id="account-info"><small>Log Out</small></a>
 			<p id="account-info">Hello {{ user.username }} </p>
-			{% if is_admin == True %}
+			{% if user.can_post == True %}
 				<a href="{% url 'post_draftList' %}" class="top-menu"><span id="edit-button" class="glyphicon glyphicon-edit"></span></a>
 				<a href="{% url 'post_new' %}" class="top-menu"><span id="new-post-button" class="glyphicon glyphicon-plus"></span></a>
 			{% endif %}
