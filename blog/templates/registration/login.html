@@ -16,8 +16,10 @@
             <td>{{ form.password.label_tag }}</td>
             <td>{{ form.password }}</td>
         </tr>
+		<tr>
+			<td><a href="{% url 'account_new' %}"><small>Create Account</small></a></td>
+		</tr>
         </table>
-
         <input type="submit" value="login" />
         <input type="hidden" name="next" value="{{ next }}" />
     </form>
