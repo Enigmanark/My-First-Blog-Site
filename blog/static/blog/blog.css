@@ -12,6 +12,12 @@
 	text-decoration: none;
 }
 
+.comment {
+	margin-bottom: 20px;
+	padding: 10px;
+	background-color: white;
+}
+
 #login {
 	margin-right: 20px;
 	font-size: 15pt;
@@ -72,7 +78,7 @@ h1, h2, h3, h4 {
 }
 
 .post {
-	margin-bottom: 70px;
+	margin-bottom: 40px;
 	padding: 10px;
 	background-color: white;
 }

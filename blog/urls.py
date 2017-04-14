@@ -12,4 +12,5 @@ urlpatterns = [
 	url(r'^post/publish/(?P<pk>\d+)/$', views.post_publish, name='post_publish'),
 	url(r'^post/unpublish/(?P<pk>\d+)/$', views.post_unpublish, name='post_unpublish'),
 	url(r'^accounts/new/$', views.account_new, name='account_new'),
+	url(r'^post/(?P<pk>\d+)/comment/$', views.comment_post, name='comment_post'),
 ]

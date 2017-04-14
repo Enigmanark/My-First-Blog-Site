@@ -2,8 +2,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-from .models import Post, BlogUser
-from .forms import PostForm, RegistrationForm
+from .models import Post, BlogUser, Comment
+from .forms import PostForm, RegistrationForm, CommentForm
 
 # Create your views here.
 def account_new(request):
@@ -28,8 +28,22 @@ def post_list(request):
 	
 def post_detail(request, pk):
 	post = get_object_or_404(Post, pk=pk)
-	return render(request, 'blog/post_detail.html', {'post': post})
+	comments = Comment.objects.filter(post=post)
+	form = CommentForm()
+	return render(request, 'blog/post_detail.html', {'post': post, 'form': form, 'comments': comments,})
 
+@login_required
+def comment_post(request, pk):
+	if request.method == "POST":
+		form = CommentForm(request.POST)
+		if form.is_valid():
+			post = get_object_or_404(Post, pk=int(pk))
+			comment = Comment(post=post, author=request.user, text=form.get_text())
+			comment.save()
+			return redirect('post_detail', pk=pk)
+	else:
+		return redirect('post_list')
+	
 @login_required	
 def post_new(request):
 	if not request.user.can_post:

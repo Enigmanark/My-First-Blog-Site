@@ -7,7 +7,7 @@ from django.contrib.auth.models import AbstractUser
 
 class BlogUser(AbstractUser):
 	can_post = models.BooleanField(default=False)
-
+	
 class Post(models.Model):
 	author = models.ForeignKey(settings.AUTH_USER_MODEL)
 	title = models.CharField(max_length=256)
@@ -26,3 +26,11 @@ class Post(models.Model):
 	def __str__(self):
 		return self.title
 	
+class Comment(models.Model):
+	post = models.ForeignKey(Post)
+	author = models.ForeignKey(settings.AUTH_USER_MODEL)
+	text = models.TextField()
+	published_date = timezone.now()
+	
+	def __str__(self):
+		return textwrap.shorten(text, width=256, placeholder='...')
