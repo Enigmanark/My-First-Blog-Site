@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post
+from .models import Post, Comment
 
 class RegistrationForm(forms.Form):
 	username = forms.CharField(label='Username', max_length=30)
@@ -26,3 +26,13 @@ class PostForm(forms.ModelForm):
 	class Meta:
 		model = Post
 		fields = ('title', 'text',)
+		
+class CommentForm(forms.ModelForm):
+	
+	def get_text(self):
+		return self.cleaned_data['text']
+		
+	class Meta:
+		model = Comment
+		fields = ('text',)
+	
