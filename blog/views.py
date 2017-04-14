@@ -2,8 +2,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-from django.contrib.auth.models import User 
-from .models import Post
+from .models import Post, BlogUser
 from .forms import PostForm, RegistrationForm
 
 # Create your views here.
@@ -13,7 +12,7 @@ def account_new(request):
 			if reg.is_valid():
 				password = reg.get_password() #get the password
 				if password: #if the passwords matched, this will be the password, if not, this will be false
-					User.objects.create_user(reg.get_username(), reg.get_email(), password)
+					BlogUser.objects.create_user(reg.get_username(), reg.get_email(), password)
 					return redirect('login')
 				else:
 					reg = RegistrationForm()
